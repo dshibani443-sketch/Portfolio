@@ -91,6 +91,78 @@ body {
     color: var(--primary-color);
 }
 
+/* ============= HAMBURGER MENU ============= */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--text-dark);
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 15, 46, 0.98);
+        flex-direction: column;
+        gap: 0;
+        list-style: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-bottom: 2px solid rgba(0, 102, 255, 0.2);
+    }
+
+    .nav-menu.active {
+        max-height: 500px;
+    }
+
+    .nav-menu li {
+        border-bottom: 1px solid rgba(0, 102, 255, 0.1);
+    }
+
+    .nav-link {
+        display: block;
+        padding: 15px 20px;
+        color: var(--text-dark);
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .nav-link:hover {
+        background: rgba(0, 102, 255, 0.1);
+        color: var(--secondary-color);
+    }
+}
+
 /* ============= HERO SECTION ============= */
 .hero {
     background: linear-gradient(135deg, #0052cc 0%, #00b8e6 50%, #0088ff 100%);
@@ -599,10 +671,6 @@ body {
 
 /* ============= RESPONSIVE DESIGN ============= */
 @media (max-width: 768px) {
-    .nav-menu {
-        gap: 1rem;
-    }
-
     .hero-content {
         flex-direction: column;
         gap: 40px;
@@ -662,11 +730,6 @@ body {
         font-size: 1.1rem;
     }
 
-    .nav-menu {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
     .education-header {
         flex-direction: column;
         gap: 10px;
@@ -678,5 +741,14 @@ body {
 
     .social-links {
         gap: 10px;
+    }
+
+    .nav-brand {
+        font-size: 1.5rem;
+    }
+
+    .profile-image img {
+        width: 150px;
+        height: 150px;
     }
 }
